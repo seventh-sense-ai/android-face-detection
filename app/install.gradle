@@ -11,7 +11,7 @@ install {
                 artifactId 'facedetection'
                 name 'facedetection'
                 description 'Easy to use library for face detection and alignment'
-                url 'https://www.seventhsense.ai'
+                url 'https://github.com/seventh-sense-ai/android-face-detection'
 
                 licenses {
                     license {
@@ -29,8 +29,8 @@ install {
                 }
 
                 scm {
-                    connection 'https://github.com/seventh-sense-ai'
-                    developerConnection 'https://github.com/seventh-sense-ai'
+                    connection 'https://github.com/seventh-sense-ai/android-face-detection'
+                    developerConnection 'https://github.com/seventh-sense-ai/android-face-detection'
                     url 'https://www.seventhsense.ai'
                 }
             }

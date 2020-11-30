@@ -36,8 +36,8 @@ bintray {
         userOrg = 'seventh-sense-ai'
         configurations = ['archives']
         desc = 'Easy to use library for face detection and alignment'
-        websiteUrl = 'https://www.seventhsense.ai'
-        vcsUrl = 'https://github.com/seventh-sense-ai'
+        websiteUrl = 'https://github.com/seventh-sense-ai/android-face-detection'
+        vcsUrl = 'https://github.com/seventh-sense-ai/android-face-detection'
         licenses = ["Apache-2.0"]
         publish = true
         publicDownloadNumbers = true
