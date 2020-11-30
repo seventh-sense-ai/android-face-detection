@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'ai.seventhsense'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'ai.seventhsense'
+                artifactId 'facedetection'
+                name 'facedetection'
+                description 'Easy to use library for face detection and alignment'
+                url 'https://www.seventhsense.ai'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'seventhsense'
+                        name 'Seventh Sense AI'
+                        email 'development@seventhsense.ai'
+                    }
+                }
+
+                scm {
+                    connection 'https://github.com/seventh-sense-ai'
+                    developerConnection 'https://github.com/seventh-sense-ai'
+                    url 'https://www.seventhsense.ai'
+                }
+            }
+        }
+    }
+}

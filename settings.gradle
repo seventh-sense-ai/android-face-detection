@@ -1,0 +1,5 @@
+include ':app'
+rootProject.name = "Face Detection"
+def opencvsdk = '/home/seventhsense/Development/OpenCV-android-sdk'
+include ':opencv'
+project(':opencv').projectDir = new File(opencvsdk + '/sdk')
