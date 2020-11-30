@@ -20,12 +20,12 @@ public class Detection {
     /**
      * Right x2 of the bounding box containing the face
      */
-    int right;
+    public int right;
 
     /**
      * Bottom y2 of the bounding box containing the face
      */
-    int bottom;
+    public int bottom;
 
     /**
      * Area (in pixels) of the bounding box
