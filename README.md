@@ -7,6 +7,7 @@ nose and mouth have been standardized to fixed coordinates.
 # Installation
 
 Just add the dependency to your module's gradle file:
+
 ```
 implementation 'ai.seventhsense:facedetection:1.0.5'
 ```
@@ -16,17 +17,15 @@ implementation 'ai.seventhsense:facedetection:1.0.5'
 First obtain an instance of a Face Detector (right now the only one we include is based on the
 open-source [libfacedetection](https://github.com/ShiqiYu/libfacedetection) library).
 
-```
+```java
 import ai.seventhsense.facedetection.Detection;
 import ai.seventhsense.facedetection.LFDDetector;
-
-...
-
 LFDDetector detector = LFDDetector.getInstance(getApplicationContext());
 ```
 
 Once you have the detector instance, you can use it to detect the largest face in a Bitmap:
-```
+
+```java
 Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.tom_cruise);
 Detection detection = detector.detect(bm);
 ```
@@ -51,6 +50,7 @@ If you would like to build them yourself, first git clone the  [libfacedetection
 project.
 
 Make sure you have Android Studio and NDK installed. Then, you can compile the library using cmake:
+
 ```
 git clone https://github.com/ShiqiYu/libfacedetection
 cd libfacedetection
