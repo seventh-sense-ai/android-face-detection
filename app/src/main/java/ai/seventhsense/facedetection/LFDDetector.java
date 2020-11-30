@@ -18,6 +18,7 @@ public class LFDDetector {
     private Context mContext;
 
     private native void initialize(int maxSide);
+    private native void setMaxSide(int maxSide);
 
     private native void closeNative();
 
@@ -51,7 +52,9 @@ public class LFDDetector {
             instances.put(threadId, detector);
             detector.initialize(maxSide);
         }
-        return instances.get(threadId);
+        LFDDetector toRet = instances.get(threadId);
+        toRet.setMaxSide(maxSide);
+        return toRet;
     }
 
     /**

@@ -16,6 +16,7 @@ public:
     FaceDetector(int max_side);
     void close();
     std::vector<std::vector<float>> detect(cv::Mat&);
+    void set_max_side(int max_side);
 };
 
 

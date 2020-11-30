@@ -15,6 +15,10 @@ void FaceDetector::close() {
     free(pBuffer);
 }
 
+void FaceDetector::set_max_side(int max_side) {
+    this->max_side = max_side;
+}
+
 std::vector<std::vector<float>> FaceDetector::detect(cv::Mat &frame) {
     float scale = 1.0;
     cv::Mat image = frame.clone();

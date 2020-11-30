@@ -9,7 +9,7 @@ nose and mouth have been standardized to fixed coordinates.
 Just add the dependency to your module's gradle file:
 
 ```
-implementation 'ai.seventhsense:facedetection:1.0.7'
+implementation 'ai.seventhsense:facedetection:1.0.8'
 ```
 
 # Usage
@@ -21,6 +21,12 @@ open-source [libfacedetection](https://github.com/ShiqiYu/libfacedetection) libr
 import ai.seventhsense.facedetection.Detection;
 import ai.seventhsense.facedetection.LFDDetector;
 LFDDetector detector = LFDDetector.getInstance(getApplicationContext());
+// You can also adjust the accuracy by specifying a higher value for maxSide
+// A higher value will improve accuracy and detect smaller faces, but will 
+// increase execution time. The default value for maxSide is 160, it is sufficient
+// for a frontal face capture using a mobile phone front camera.
+// Below we double this value:
+// LFDDetector detector = LFDDetector.getInstance(getApplicationContext(), 320);
 ```
 
 Once you have the detector instance, you can use it to detect the largest face in a Bitmap:

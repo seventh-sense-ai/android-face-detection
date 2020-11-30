@@ -200,3 +200,11 @@ Java_ai_seventhsense_facedetection_LFDDetector_detectNative(JNIEnv *env, jobject
     env->SetFloatArrayRegion(toRet, 0, result.size() * 15, fill);
     return toRet;
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_ai_seventhsense_facedetection_LFDDetector_setMaxSide(JNIEnv *env, jobject thiz,
+                                                          jint max_side) {
+    FaceDetector *inst = getHandle<FaceDetector>(env, thiz);
+    inst->set_max_side((int) max_side);
+}
