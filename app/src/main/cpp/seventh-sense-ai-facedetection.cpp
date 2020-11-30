@@ -40,7 +40,7 @@ Java_ai_seventhsense_facedetection_LFDDetector_initialize(JNIEnv *env, jobject t
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_ai_seventhsense_facedetection_LFDDetector_close(JNIEnv *env, jobject thiz) {
+Java_ai_seventhsense_facedetection_LFDDetector_closeNative(JNIEnv *env, jobject thiz) {
     FaceDetector *inst = getHandle<FaceDetector>(env, thiz);
     inst->close();
     delete inst;

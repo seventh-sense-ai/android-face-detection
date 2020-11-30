@@ -9,7 +9,7 @@ nose and mouth have been standardized to fixed coordinates.
 Just add the dependency to your module's gradle file:
 
 ```
-implementation 'ai.seventhsense:facedetection:1.0.6'
+implementation 'ai.seventhsense:facedetection:1.0.7'
 ```
 
 # Usage

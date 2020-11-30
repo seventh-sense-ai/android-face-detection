@@ -19,10 +19,18 @@ public class LFDDetector {
 
     private native void initialize(int maxSide);
 
+    private native void closeNative();
+
     /**
      * Dispose of native objects and release memory
      */
-    public native void close();
+    public void close() {
+        Long threadId = Thread.currentThread().getId();
+        if(instances.containsKey(threadId)) {
+            closeNative();
+            instances.remove(threadId);
+        }
+    }
 
     private native float[] detectNative(Bitmap image, Bitmap crop);
 
