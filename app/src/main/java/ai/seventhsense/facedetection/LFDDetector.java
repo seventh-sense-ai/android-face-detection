@@ -33,7 +33,7 @@ public class LFDDetector {
         }
     }
 
-    private native float[] detectNative(Bitmap image, Bitmap crop);
+    private native float[] detectNative(Bitmap image, Bitmap crop, float thumbnailScale);
 
     private LFDDetector(Context context) {
         this.mContext = context;
@@ -72,12 +72,23 @@ public class LFDDetector {
      * @return a detection object if a face was present, null otherwise
      */
     public Detection detect(Bitmap image) {
+        return detect(image, 1);
+    }
+
+    /**
+     * Get's the largest face detection in the image
+     * @param image the Bitmap to use for face detection. It must be RGBA_8888 or RGB_565
+     * @param thumbnailScale the scale of the thumbnail in the detection - 1 returns 112x112, 2 returns 224x224 etc.
+     * @return a detection object if a face was present, null otherwise
+     */
+    public Detection detect(Bitmap image, int thumbnailScale) {
         Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
 
         // this creates a MUTABLE bitmap
-        Bitmap thumbnail = Bitmap.createBitmap(112, 112, conf);
+        Bitmap thumbnail = Bitmap.createBitmap(112 * thumbnailScale,
+                112 * thumbnailScale, conf);
 
-        float[] results = detectNative(image, thumbnail);
+        float[] results = detectNative(image, thumbnail, thumbnailScale);
 
         ArrayList<Detection> detections = new ArrayList<>();
         for (int index = 0; index < results.length; index += 15) {

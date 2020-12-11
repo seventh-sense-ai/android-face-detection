@@ -138,7 +138,7 @@ void convert_mat_to_bitmap(JNIEnv *env,  cv::Mat& mat, jobject& bitmap,bool need
 extern "C"
 JNIEXPORT jfloatArray JNICALL
 Java_ai_seventhsense_facedetection_LFDDetector_detectNative(JNIEnv *env, jobject thiz,
-        jobject bitmap, jobject thumbnail) {
+        jobject bitmap, jobject thumbnail, jfloat thumbnail_scale) {
     FaceDetector *inst = getHandle<FaceDetector>(env, thiz);
     cv::Mat rgba;
     convert_bitmap_to_rgba_mat(env, bitmap, rgba, false);
@@ -173,16 +173,16 @@ Java_ai_seventhsense_facedetection_LFDDetector_detectNative(JNIEnv *env, jobject
         source.push_back(cv::Point2f( result[biggest_index][10], result[biggest_index][11]));
         source.push_back(cv::Point2f( result[biggest_index][12], result[biggest_index][13]));
 
-        target.push_back(cv::Point2f(30.2946 + 8, 51.6963));
-        target.push_back(cv::Point2f(65.5318 + 8, 51.5014));
-        target.push_back(cv::Point2f(48.0252 + 8, 71.7366));
-        target.push_back(cv::Point2f(33.5493 + 8, 92.3655));
-        target.push_back(cv::Point2f(62.7299 + 8, 92.2041));
+        target.push_back(cv::Point2f((30.2946 + 8) * thumbnail_scale, 51.6963 * thumbnail_scale));
+        target.push_back(cv::Point2f((65.5318 + 8) * thumbnail_scale, 51.5014 * thumbnail_scale));
+        target.push_back(cv::Point2f((48.0252 + 8) * thumbnail_scale, 71.7366 * thumbnail_scale));
+        target.push_back(cv::Point2f((33.5493 + 8) * thumbnail_scale, 92.3655 * thumbnail_scale));
+        target.push_back(cv::Point2f((62.7299 + 8) * thumbnail_scale, 92.2041 * thumbnail_scale));
 
         cv::Mat transform = cv::estimateAffinePartial2D(source, target, cv::noArray(),
                 cv::LMEDS);
         cv::Mat crop;
-        cv::warpAffine(rgba, crop, transform, cv::Size(112, 112));
+        cv::warpAffine(rgba, crop, transform, cv::Size((int) (112.0 * thumbnail_scale), (int) (112.0 * thumbnail_scale)));
         convert_mat_to_bitmap(env, crop, thumbnail, false);
     }
 
